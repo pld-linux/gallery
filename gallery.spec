@@ -3,16 +3,22 @@ Version:	3.0
 Release:	1
 License:	GPL
 Source0:	http://malekith.cnc.pl/bin/%{name}-%{version}.tar.gz
-BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 Summary:	SVGALib JPEG/GIF/PNG/... picture viewer.
 Summary(pl):	Bazowana na SVGALibie przegl±darka do obrazków
 Group:		Applications/Graphics
 Group(de):	Applikationen/Grafik
 Group(pl):	Aplikacje/Grafika
+Vendor:         Micha³ Moskal <malekith@pld.org.pl>
 URL:		http://malekith.topnet.pl/
+BuildRequires:  perl
+BuildRequires:  gawk
+BuildRequires:  sed
 BuildRequires:	svgalib-devel
 BuildRequires:	aalib-devel
-Vendor:		Micha³ Moskal <malekith@pld.org.pl>
+BuildRequires:	libpng-devel
+BuildRequires:	libtiff-devel
+BuildRequires:	libstdc++-devel
+BuildRoot:      %{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
 Picture viewer for several gfx formats (PNG, GIF, JPEG, TIFF, PCX,
@@ -29,35 +35,46 @@ Xów. Obrazki mo¿na skalowaæ, kwantyzowaæ, robiæ slideshowy i wiele
 innych bezsensownych rzeczy. Gallery obs³uguje mysz. Mo¿e równie¿
 wy¶wietlaæ obrazki w trybie textowym u¿ywaj±c aaliba.
 
-
 %prep
 %setup -q
 
 %build
-%configure --without-debug --with-gziped-man --with-polish-man --with-aalib
+%configure \
+	--without-debug \
+	--without-gziped-man \
+	--with-polish-man \
+	--with-aalib
 %{__make}
 
 %install
 
 rm -rf $RPM_BUILD_ROOT
 
-install -d $RPM_BUILD_ROOT%{_mandir}/man1 $RPM_BUILD_ROOT%{_mandir}/pl/man1
-install doc/gallery.man.gz $RPM_BUILD_ROOT%{_mandir}/man1/gallery.1.gz
-install doc/gallery-pl.man.gz $RPM_BUILD_ROOT%{_mandir}/pl/man1/gallery.1.gz
-gzip -9nf doc/{AUTHORS,BETA-TESTERS,BUGS,CREDITS,INSTALL,NEWS} \
-	doc/{README,README.pl,TODO}
+install -d $RPM_BUILD_ROOT%{_mandir}/{man1,pl/man1}
 install -d $RPM_BUILD_ROOT%{_bindir}
-install -m 755 src/gallery $RPM_BUILD_ROOT%{_bindir}
 install -d $RPM_BUILD_ROOT%{_libdir}/gallery
-install lib/* $RPM_BUILD_ROOT%{_libdir}/gallery
+
+install doc/gallery.man		$RPM_BUILD_ROOT%{_mandir}/man1/gallery.1
+install doc/gallery-pl.man	$RPM_BUILD_ROOT%{_mandir}/pl/man1/gallery.1
+install -m 755 src/gallery	$RPM_BUILD_ROOT%{_bindir}
+install lib/*			$RPM_BUILD_ROOT%{_libdir}/gallery
+%{__make}			prefix=$RPM_BUILD_ROOT%{_prefix} -C po install
+
 rm -f $RPM_BUILD_ROOT%{_libdir}/gallery/Makefile*
-%{__make} prefix=$RPM_BUILD_ROOT%{_prefix} -C po install
+
+gzip -9nf doc/{AUTHORS,BETA-TESTERS,BUGS,CREDITS,INSTALL,NEWS} \
+	  doc/{README,README.pl,TODO}
+
+%find_lang %{name}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
-%files
+%files -f %{name}.lang
 %defattr(644,root,root,755)
+%doc doc/{AUTHORS,BETA-TESTERS,BUGS,CREDITS,INSTALL,NEWS,README,TODO}.gz
+%doc %lang(pl) doc/README.pl.gz
+
 %attr(755, root, root) %{_bindir}/*
 %{_mandir}/man1/*
 %dir %{_libdir}/gallery
@@ -65,9 +82,3 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755, root, root) %{_libdir}/gallery/config-lynx
 %attr(755, root, root) %{_libdir}/gallery/gallery-bugreport
 %attr(755, root, root) %{_libdir}/gallery/lsd
-
-%lang(pl) %{_datadir}/locale/pl/LC_MESSAGES/gallery.mo
-%lang(pl) %{_mandir}/pl/man1/*
-
-%doc doc/{AUTHORS,BETA-TESTERS,BUGS,CREDITS,INSTALL,NEWS,README,TODO}.gz
-%doc %lang(pl) doc/README.pl.gz
