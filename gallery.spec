@@ -1,10 +1,10 @@
-Name:		gallery
-Version:	3.1
-Release:	1
-License:	GPL
-Source0:	ftp://ftp.pld.org.pl/people/malekith/%{name}-%{version}.tar.gz
 Summary:	SVGALib JPEG/GIF/PNG/... picture viewer.
 Summary(pl):	Bazowana na SVGALibie przegl±darka do obrazków
+Name:		gallery
+Version:	3.1
+Release:	2
+License:	GPL
+Source0:	ftp://ftp.pld.org.pl/people/malekith/%{name}-%{version}.tar.gz
 Group:		Applications/Graphics
 Group(de):	Applikationen/Grafik
 Group(pl):	Aplikacje/Grafika
@@ -37,6 +37,8 @@ wy¶wietlaæ obrazki w trybie textowym u¿ywaj±c aaliba.
 %setup -q
 
 %build
+aclocal
+autoconf
 %configure \
 	--without-debug \
 	--without-gziped-man \
