@@ -15,6 +15,7 @@ BuildRequires:	aalib-devel
 BuildRequires:	libpng-devel
 BuildRequires:	libtiff-devel
 BuildRequires:	libstdc++-devel
+ExclusiveArch:	%{ix86} alpha
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -60,9 +61,6 @@ install lib/*			$RPM_BUILD_ROOT%{_libdir}/gallery
 
 rm -f $RPM_BUILD_ROOT%{_libdir}/gallery/Makefile*
 
-gzip -9nf doc/{AUTHORS,BETA-TESTERS,BUGS,CREDITS,INSTALL,NEWS} \
-	  doc/{README,README.pl,TODO}
-
 %find_lang %{name}
 
 %clean
@@ -70,13 +68,13 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -f %{name}.lang
 %defattr(644,root,root,755)
-%doc doc/{AUTHORS,BETA-TESTERS,BUGS,CREDITS,INSTALL,NEWS,README,TODO}.gz
-%doc %lang(pl) doc/README.pl.gz
+%doc doc/{AUTHORS,BETA-TESTERS,BUGS,CREDITS,INSTALL,NEWS,README,TODO}
+%doc %lang(pl) doc/README.pl
 
 %attr(755, root, root) %{_bindir}/*
 %{_mandir}/man1/*
 %dir %{_libdir}/gallery
 %{_libdir}/gallery/message.jpg
-%attr(755, root, root) %{_libdir}/gallery/config-lynx
-%attr(755, root, root) %{_libdir}/gallery/gallery-bugreport
-%attr(755, root, root) %{_libdir}/gallery/lsd
+%attr(755,root,root) %{_libdir}/gallery/config-lynx
+%attr(755,root,root) %{_libdir}/gallery/gallery-bugreport
+%attr(755,root,root) %{_libdir}/gallery/lsd
