@@ -37,7 +37,7 @@ wy¶wietlaæ obrazki w trybie textowym u¿ywaj±c aaliba.
 %setup -q
 
 %build
-aclocal
+%{__aclocal}
 %{__autoconf}
 %configure \
 	--without-debug \
