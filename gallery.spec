@@ -1,4 +1,4 @@
-Summary:	SVGALib JPEG/GIF/PNG/... picture viewer.
+Summary:	SVGALib JPEG/GIF/PNG/... picture viewer
 Summary(pl):	Bazowana na SVGALibie przegl±darka do obrazków
 Name:		gallery
 Version:	3.1
