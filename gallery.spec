@@ -2,7 +2,7 @@ Name:		gallery
 Version:	3.1
 Release:	1
 License:	GPL
-Source0:	ftp://ftp.pld.org.pl/software/trash/%{name}-%{version}.tar.gz
+Source0:	ftp://ftp.pld.org.pl/people/malekith/%{name}-%{version}.tar.gz
 Summary:	SVGALib JPEG/GIF/PNG/... picture viewer.
 Summary(pl):	Bazowana na SVGALibie przegl±darka do obrazków
 Group:		Applications/Graphics
