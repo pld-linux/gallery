@@ -13,7 +13,7 @@ Group:		Applications/Publishing
 Source0:	http://dl.sourceforge.net/%{name}/%{name}-%{version}-%{_pl}.tar.gz
 # Source0-md5:	ad84576e9dedb24fdf3c5b90cd3003ef
 Source1:	http://dl.sourceforge.net/%{name}/pl_PL-%{version}.tar.gz
-# Source1-md5:	b6949d63f0e3d4bb015514726005d231
+# Source1-md5:	f7ad546e0bf3c209e051f8ca1c68142b
 URL:		http://gallery.sourceforge.net/
 BuildArch:	noarch
 Requires:	webserver
