@@ -8,8 +8,8 @@ diff -urN aa/gallery/manifest.inc gallery/manifest.inc
 -$versions['AUTHORS']='1.16';
 -$versions['LICENSE.txt']='1.2';
 -$versions['README']='1.28';
- $versions['Version.php']='1.573.2.9';
- $versions['add_comment.php']='1.29.2.1';
+ $versions['Version.php']='1.573.2.13';
+ $versions['add_comment.php']='1.29.2.2';
  $versions['add_photo.php']='1.18.6.1';
 @@ -39,7 +36,6 @@
  $versions['album_permissions.php']='1.34.4.2';
