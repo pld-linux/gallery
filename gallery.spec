@@ -10,7 +10,8 @@ Group(de):	Applikationen/Grafik
 Group(pl):	Aplikacje/Grafika
 Vendor:         Micha³ Moskal <malekith@pld.org.pl>
 URL:		http://malekith.topnet.pl/
-BuildRequires:  sed
+BuildRequires:  autoconf
+BuildRequires:	automake
 BuildRequires:	svgalib-devel
 BuildRequires:	aalib-devel
 BuildRequires:	libpng-devel
@@ -47,7 +48,6 @@ autoconf
 %{__make}
 
 %install
-
 rm -rf $RPM_BUILD_ROOT
 
 install -d $RPM_BUILD_ROOT%{_mandir}/{man1,pl/man1}
