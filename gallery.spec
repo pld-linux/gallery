@@ -1,78 +1,71 @@
-Summary:	SVGALib JPEG/GIF/PNG/... picture viewer
-Summary(pl):	Bazowana na SVGALibie przegl±darka do obrazków
+Summary:	Web based photo album viewer and creator.
+Summary(pl):	Przegl±darka i generator albumów zdjêæ w postaci stron WWW
 Name:		gallery
-Version:	3.1
-Release:	2
+Version:	1.4.1
+Release:	1
 License:	GPL
-Vendor:		Micha³ Moskal <malekith@pld-linux.org>
-Group:		Applications/Graphics
-Source0:	ftp://ftp.pld-linux.org/people/malekith/%{name}-%{version}.tar.gz
-# Source0-md5:	aeea61e2f4d2779479e7a876cdc2eec8
-BuildRequires:	aalib-devel
-BuildRequires:	autoconf
-BuildRequires:	automake
-BuildRequires:	libpng-devel
-BuildRequires:	libstdc++-devel
-BuildRequires:	libtiff-devel
-BuildRequires:	svgalib-devel
-ExclusiveArch:	%{ix86} alpha
+Group:		Applications/Publishing
+Source0:	http://dl.sourceforge.net/%{name}/%{name}-%{version}.tar.gz
+# Source0-md5:	7152ba06c6c879695cefd260acfd9b8f
+Source1:	http://dl.sourceforge.net/%{name}/pl_PL-pack-%{version}.tar.gz
+# Source1-md5:	0ff9a42839a944612d6a618d6ee83b03
+URL:		http://gallery.sourceforge.net/
+BuildArch:	noarch
+Requires:	webserver
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
+%define	gallerydir	/home/services/httpd/html/gallery
+
 %description
-Picture viewer for several gfx formats (PNG, GIF, JPEG, TIFF, PCX,
-XPM, BMP, P?M, IFF-{IL,P}BM and othres). No X supported nor needed.
-Feauters include scaling, quantizing, sliedeshows and a *lot* of
-useless options. Even mouse is supported, it can be used for scaling
-and scrolling. Gallery can also display images in text-mode, using
-aalib.
+Gallery is a photo album that includes a config wizard and lets users
+create and maintain albums via an intuitive Web interface. Photo
+management includes automatic thumbnail creation, image resizing,
+rotation, ordering and more. Albums can have read, write, and caption
+permissions per individual.
 
 %description -l pl
-Przegl±darka do obrazków w sporej liczbie formatów formatach (PNG,
-GIF, JPEG, TIFF, PCX, XPM, BMP, P?M, IFF-{IL,P}BM i inne). ¯adnych
-Xów. Obrazki mo¿na skalowaæ, kwantyzowaæ, robiæ slideshowy i wiele
-innych bezsensownych rzeczy. Gallery obs³uguje mysz. Mo¿e równie¿
-wy¶wietlaæ obrazki w trybie textowym u¿ywaj±c aaliba.
+Gallery jest albumem zdjêæ, który posiadaj kreatora konfiguracji i
+pozwala u¿ytkownikom tworzyæ i zarz±dzaæ albumami przez intuicyjny
+interfejs WWW. Zarz±dzanie zdjêciami umo¿liwia automatyczne tworzenie
+miniatur, zmianê wielko¶ci obrazów, obrót, zmianê kolejno¶ci
+wy¶wietlania, itp. Albumy mog± posiadaæ indywidualne uprawnienia.
 
 %prep
-%setup -q
-
-%build
-%{__aclocal}
-%{__autoconf}
-%configure \
-	--without-debug \
-	--without-gziped-man \
-	--with-polish-man \
-	--with-aalib
-%{__make}
+%setup -q -a1 -n %{name}
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT{%{_mandir}/{man1,pl/man1},%{_bindir},%{_libdir}/gallery}
+install -d $RPM_BUILD_ROOT%{gallerydir}
 
-%{__make} -C po install \
-	prefix=$RPM_BUILD_ROOT%{_prefix}
-
-install doc/gallery.man		$RPM_BUILD_ROOT%{_mandir}/man1/gallery.1
-install doc/gallery-pl.man	$RPM_BUILD_ROOT%{_mandir}/pl/man1/gallery.1
-install src/gallery		$RPM_BUILD_ROOT%{_bindir}
-install lib/*			$RPM_BUILD_ROOT%{_libdir}/gallery
-
-rm -f $RPM_BUILD_ROOT%{_libdir}/gallery/Makefile*
-
-%find_lang %{name}
+rm -f LICENSE.txt *.bat
+mv pl_PL locale
+cp -R * $RPM_BUILD_ROOT%{gallerydir}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
-%files -f %{name}.lang
+%files
 %defattr(644,root,root,755)
-%doc doc/{AUTHORS,BETA-TESTERS,BUGS,CREDITS,NEWS,README,TODO}
-%doc %lang(pl) doc/README.pl
-%attr(755,root,root) %{_bindir}/*
-%dir %{_libdir}/gallery
-%{_libdir}/gallery/message.jpg
-%attr(755,root,root) %{_libdir}/gallery/config-lynx
-%attr(755,root,root) %{_libdir}/gallery/gallery-bugreport
-%attr(755,root,root) %{_libdir}/gallery/lsd
-%{_mandir}/man1/*
+%doc AUTHORS ChangeLog README RELEASE_NOTES
+%dir %{gallerydir}
+%attr(755,root,root) %{gallerydir}/*.sh
+%{gallerydir}/*.php
+%{gallerydir}/*.inc
+%{gallerydir}/classes
+%{gallerydir}/css
+%{gallerydir}/docs
+%{gallerydir}/errors
+%{gallerydir}/html*
+%{gallerydir}/images
+%{gallerydir}/java
+%{gallerydir}/js
+%{gallerydir}/layout
+%{gallerydir}/platform
+%{gallerydir}/po
+%{gallerydir}/setup
+%{gallerydir}/skins
+%{gallerydir}/tools
+
+%dir %{gallerydir}/locale
+%{gallerydir}/locale/en_US
+%lang(pl) %{gallerydir}/locale/pl_PL
