@@ -5,6 +5,7 @@ Version:	3.1
 Release:	2
 License:	GPL
 Source0:	ftp://ftp.pld.org.pl/people/malekith/%{name}-%{version}.tar.gz
+# Source0-md5:	aeea61e2f4d2779479e7a876cdc2eec8
 Group:		Applications/Graphics
 Vendor:		Micha³ Moskal <malekith@pld.org.pl>
 URL:		http://malekith.topnet.pl/
