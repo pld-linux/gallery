@@ -1,8 +1,8 @@
 Name:		gallery
-Version:	3.0
+Version:	3.1
 Release:	1
 License:	GPL
-Source0:	http://malekith.cnc.pl/bin/%{name}-%{version}.tar.gz
+Source0:	ftp://ftp.pld.org.pl/software/trash/%{name}-%{version}.tar.gz
 Summary:	SVGALib JPEG/GIF/PNG/... picture viewer.
 Summary(pl):	Bazowana na SVGALibie przegl±darka do obrazków
 Group:		Applications/Graphics
@@ -10,8 +10,6 @@ Group(de):	Applikationen/Grafik
 Group(pl):	Aplikacje/Grafika
 Vendor:         Micha³ Moskal <malekith@pld.org.pl>
 URL:		http://malekith.topnet.pl/
-BuildRequires:  perl
-BuildRequires:  gawk
 BuildRequires:  sed
 BuildRequires:	svgalib-devel
 BuildRequires:	aalib-devel
