@@ -6,16 +6,16 @@ Release:	2
 License:	GPL
 Source0:	ftp://ftp.pld.org.pl/people/malekith/%{name}-%{version}.tar.gz
 Group:		Applications/Graphics
-Vendor:         Micha³ Moskal <malekith@pld.org.pl>
+Vendor:		Micha³ Moskal <malekith@pld.org.pl>
 URL:		http://malekith.topnet.pl/
-BuildRequires:  autoconf
+BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	svgalib-devel
 BuildRequires:	aalib-devel
 BuildRequires:	libpng-devel
 BuildRequires:	libtiff-devel
 BuildRequires:	libstdc++-devel
-BuildRoot:      %{tmpdir}/%{name}-%{version}-root-%(id -u -n)
+BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
 Picture viewer for several gfx formats (PNG, GIF, JPEG, TIFF, PCX,
