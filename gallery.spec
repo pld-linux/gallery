@@ -4,10 +4,10 @@ Name:		gallery
 Version:	3.1
 Release:	2
 License:	GPL
-Source0:	ftp://ftp.pld-linux.org/people/malekith/%{name}-%{version}.tar.gz
-# Source0-md5:	aeea61e2f4d2779479e7a876cdc2eec8
 Group:		Applications/Graphics
 Vendor:		Micha³ Moskal <malekith@pld-linux.org>
+Source0:	ftp://ftp.pld-linux.org/people/malekith/%{name}-%{version}.tar.gz
+# Source0-md5:	aeea61e2f4d2779479e7a876cdc2eec8
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	svgalib-devel
@@ -48,16 +48,15 @@ wy¶wietlaæ obrazki w trybie textowym u¿ywaj±c aaliba.
 
 %install
 rm -rf $RPM_BUILD_ROOT
+install -d $RPM_BUILD_ROOT{%{_mandir}/{man1,pl/man1},%{_bindir},%{_libdir}/gallery}
 
-install -d $RPM_BUILD_ROOT%{_mandir}/{man1,pl/man1}
-install -d $RPM_BUILD_ROOT%{_bindir}
-install -d $RPM_BUILD_ROOT%{_libdir}/gallery
+%{__make} -C po install \
+	prefix=$RPM_BUILD_ROOT%{_prefix}
 
 install doc/gallery.man		$RPM_BUILD_ROOT%{_mandir}/man1/gallery.1
 install doc/gallery-pl.man	$RPM_BUILD_ROOT%{_mandir}/pl/man1/gallery.1
-install -m 755 src/gallery	$RPM_BUILD_ROOT%{_bindir}
+install src/gallery		$RPM_BUILD_ROOT%{_bindir}
 install lib/*			$RPM_BUILD_ROOT%{_libdir}/gallery
-%{__make}			prefix=$RPM_BUILD_ROOT%{_prefix} -C po install
 
 rm -f $RPM_BUILD_ROOT%{_libdir}/gallery/Makefile*
 
@@ -70,11 +69,10 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc doc/{AUTHORS,BETA-TESTERS,BUGS,CREDITS,INSTALL,NEWS,README,TODO}
 %doc %lang(pl) doc/README.pl
-
 %attr(755, root, root) %{_bindir}/*
-%{_mandir}/man1/*
 %dir %{_libdir}/gallery
 %{_libdir}/gallery/message.jpg
 %attr(755,root,root) %{_libdir}/gallery/config-lynx
 %attr(755,root,root) %{_libdir}/gallery/gallery-bugreport
 %attr(755,root,root) %{_libdir}/gallery/lsd
+%{_mandir}/man1/*
