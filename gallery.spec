@@ -6,8 +6,6 @@ Release:	2
 License:	GPL
 Source0:	ftp://ftp.pld.org.pl/people/malekith/%{name}-%{version}.tar.gz
 Group:		Applications/Graphics
-Group(de):	Applikationen/Grafik
-Group(pl):	Aplikacje/Grafika
 Vendor:         Micha³ Moskal <malekith@pld.org.pl>
 URL:		http://malekith.topnet.pl/
 BuildRequires:  autoconf
