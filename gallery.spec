@@ -4,17 +4,17 @@ Name:		gallery
 Version:	3.1
 Release:	2
 License:	GPL
-Group:		Applications/Graphics
 Vendor:		Micha³ Moskal <malekith@pld-linux.org>
+Group:		Applications/Graphics
 Source0:	ftp://ftp.pld-linux.org/people/malekith/%{name}-%{version}.tar.gz
 # Source0-md5:	aeea61e2f4d2779479e7a876cdc2eec8
+BuildRequires:	aalib-devel
 BuildRequires:	autoconf
 BuildRequires:	automake
-BuildRequires:	svgalib-devel
-BuildRequires:	aalib-devel
 BuildRequires:	libpng-devel
-BuildRequires:	libtiff-devel
 BuildRequires:	libstdc++-devel
+BuildRequires:	libtiff-devel
+BuildRequires:	svgalib-devel
 ExclusiveArch:	%{ix86} alpha
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -67,9 +67,9 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -f %{name}.lang
 %defattr(644,root,root,755)
-%doc doc/{AUTHORS,BETA-TESTERS,BUGS,CREDITS,INSTALL,NEWS,README,TODO}
+%doc doc/{AUTHORS,BETA-TESTERS,BUGS,CREDITS,NEWS,README,TODO}
 %doc %lang(pl) doc/README.pl
-%attr(755, root, root) %{_bindir}/*
+%attr(755,root,root) %{_bindir}/*
 %dir %{_libdir}/gallery
 %{_libdir}/gallery/message.jpg
 %attr(755,root,root) %{_libdir}/gallery/config-lynx
