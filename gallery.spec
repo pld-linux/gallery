@@ -1,14 +1,15 @@
+%define	_rc	RC1
 Summary:	Web based photo album viewer and creator.
 Summary(pl):	Przegl±darka i generator albumów zdjêæ w postaci stron WWW
 Name:		gallery
-Version:	1.4.1
-Release:	1
+Version:	1.4.2
+Release:	0.%{_rc}.1
 License:	GPL
 Group:		Applications/Publishing
-Source0:	http://dl.sourceforge.net/%{name}/%{name}-%{version}.tar.gz
-# Source0-md5:	7152ba06c6c879695cefd260acfd9b8f
-Source1:	http://dl.sourceforge.net/%{name}/pl_PL-pack-%{version}.tar.gz
-# Source1-md5:	0ff9a42839a944612d6a618d6ee83b03
+Source0:	http://dl.sourceforge.net/%{name}/%{name}-%{version}-%{_rc}.tar.gz
+# Source0-md5:	08990a33087dd890c577d4a8452cd1cb
+Source1:	http://dl.sourceforge.net/%{name}/pl_PL-pack-%{version}-%{_rc}.tar.gz
+# Source1-md5:	0993f84479e608c8fdea215ba1594d3f
 URL:		http://gallery.sourceforge.net/
 BuildArch:	noarch
 Requires:	webserver
@@ -46,7 +47,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc AUTHORS ChangeLog README RELEASE_NOTES
+%doc AUTHORS ChangeLog README
 %dir %{gallerydir}
 %attr(755,root,root) %{gallerydir}/*.sh
 %{gallerydir}/*.php
