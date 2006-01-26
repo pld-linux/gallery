@@ -1,0 +1,31 @@
+--- ./lib/url.php~	2005-12-26 23:23:03.000000000 +0200
++++ ./lib/url.php	2006-01-27 00:45:58.479261981 +0200
+@@ -17,7 +17,7 @@
+ 	$currentFile = __FILE__;
+ 	if ( $currentFile == '/usr/share/gallery/lib/url.php') {
+ 		/* We assum Gallery runs on as Debian Package */
+-		define ("GALLERY_CONFDIR", "/etc/gallery");
++		define ("GALLERY_CONFDIR", "/etc/webapps/gallery");
+ 		define ("GALLERY_SETUPDIR", "/var/lib/gallery/setup");
+ 	} else {
+ 		define ("GALLERY_CONFDIR", dirname(dirname(__FILE__)));
+--- gallery/setup/config_data.inc	2006-01-10 07:41:32.000000000 +0200
++++ /tmp/config_data.inc	2006-01-27 00:53:36.000000000 +0200
+@@ -317,7 +317,7 @@
+ 		'desc' => '(<span class="attention">' . gTranslate('config',"REQUIRED") . '</span>) ' .
+ 		  sprintf(gTranslate('config',"The full path on physical disk to the directory where your photos will be stored.  This directory should start off empty&#8212;Gallery will fill it.  Note that this directory needs to have write access by the user who is running the web server (in your case this user is %s)."),
+ 		  '<b>'. $webserver_user . '</b>'),
+-		'value' => getenv('DOCUMENT_ROOT') . '/albums',
++		'value' => '/var/lib/gallery/albums',
+ 		'require-write-dir' => 1,
+ 		'filename' => 1,
+ 		'type' => 'text',
+@@ -330,7 +330,7 @@
+ 		'desc' => '(<span class="attention">' . gTranslate('config',"REQUIRED") . '</span>) ' .
+ 		  sprintf(gTranslate('config',"The filesystem path to a temporary directory.  E.g. %s or %s.  Note that if you have <b>open_basedir</b> configured on your system, then this temporary directory must be inside the <b>open_basedir</b> path!  In that case you may need to create the directory yourself and make sure that it's writable by the webserver process."),
+ 		  '<i>/tmp</i>','<i>c:\\windows\\temp</i>'),
+-		'value' => getenv('TMP'),
++		'value' => '/var/tmp',
+ 		'filename' => 1,
+ 		'require-write-dir' => 1,
+ 		'type' => 'text',
