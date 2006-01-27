@@ -63,12 +63,6 @@ pozostawienie plików instalacyjnych mog³oby byæ niebezpieczne.
 
 tar zxf %{SOURCE1} -C locale
 rm -f LICENSE.txt *.bat
-cat > config.conf <<'EOF'
-Alias /gallery %{_appdir}
-<Directory %{_appdir}>
-	allow from all
-</Directory>
-EOF
 
 %install
 rm -rf $RPM_BUILD_ROOT
