@@ -70,7 +70,7 @@ install -d $RPM_BUILD_ROOT{%{_appdir},%{_sysconfdir},/var/lib/gallery/albums}
 
 cp -a *.{php,inc,sh} $RPM_BUILD_ROOT%{_appdir}
 cp -a classes contrib css docs help html html_wrap images $RPM_BUILD_ROOT%{_appdir}
-cp -a includes java js layout lib locale platform po skins tools $RPM_BUILD_ROOT%{_appdir}
+cp -a includes java js layout lib locale platform skins tools $RPM_BUILD_ROOT%{_appdir}
 # in /var because of setup/resetadmin file
 cp -a setup $RPM_BUILD_ROOT/var/lib/gallery
 ln -s /var/lib/gallery/setup $RPM_BUILD_ROOT%{_appdir}
@@ -128,7 +128,6 @@ rm -rf $RPM_BUILD_ROOT
 %{_appdir}/layout
 %{_appdir}/lib
 %{_appdir}/platform
-%{_appdir}/po
 %{_appdir}/skins
 %{_appdir}/tools
 
