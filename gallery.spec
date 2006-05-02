@@ -1,12 +1,12 @@
 Summary:	Web based photo album viewer and creator
 Summary(pl):	Przegl±darka i generator albumów zdjêæ w postaci stron WWW
 Name:		gallery
-Version:	1.5.2
+Version:	1.5.3
 Release:	1
 License:	GPL
 Group:		Applications/Publishing
 Source0:	http://dl.sourceforge.net/gallery/%{name}-%{version}.tar.gz
-# Source0-md5:	6156b335a712d5515c3cc84c6bcd77da
+# Source0-md5:	ed5fd4aeff5146552eaba5ff6d0de576
 Source1:	http://dl.sourceforge.net/gallery/pl_PL-1.5.1.tar.gz
 # Source1-md5:	efe8e359041c2c07463132ad0f7a8bea
 Source2:	%{name}-apache.conf
@@ -74,6 +74,7 @@ cp -a includes java js layout lib locale platform skins tools $RPM_BUILD_ROOT%{_
 # in /var because of setup/resetadmin file
 cp -a setup $RPM_BUILD_ROOT/var/lib/gallery
 ln -s /var/lib/gallery/setup $RPM_BUILD_ROOT%{_appdir}
+ln -s %{_sysconfdir}/config.php $RPM_BUILD_ROOT%{_appdir}/config.php
 rm -f $RPM_BUILD_ROOT%{_appdir}/{AUTHORS,ChangeLog*,README}
 
 install %{SOURCE2} $RPM_BUILD_ROOT%{_sysconfdir}/apache.conf
@@ -139,4 +140,5 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_appdir}/*.sh
 %{_appdir}/setup
+%{_appdir}/config.php
 /var/lib/gallery/setup
