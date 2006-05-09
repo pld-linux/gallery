@@ -53,7 +53,7 @@ should uninstall this package when you're done, as it considered
 insecure to keep the setup files in place.
 
 %description setup -l pl
-Ten pakiet nale¿y zainstalowaæ w celu wstêpnej konfigurac Gallery po
+Ten pakiet nale¿y zainstalowaæ w celu wstêpnej konfiguracji Gallery po
 pierwszej instalacji. Potem nale¿y go odinstalowaæ, jako ¿e
 pozostawienie plików instalacyjnych mog³oby byæ niebezpieczne.
 
