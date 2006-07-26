@@ -114,6 +114,7 @@ rm -rf $RPM_BUILD_ROOT
 %dir %attr(770,root,http) /var/lib/gallery/albums
 %{_appdir}/*.php
 %{_appdir}/*.inc
+%{_appdir}/login.txt
 %{_appdir}/images
 %{_appdir}/lib
 %{_appdir}/modules
