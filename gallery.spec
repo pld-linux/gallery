@@ -50,6 +50,7 @@ Summary:	Gallery setup package
 Summary(pl):	Pakiet do wstêpnej konfiguracji Gallery
 Group:		Applications/WWW
 Requires:	%{name} = %{version}-%{release}
+Conflicts:	external-gallery-module
 
 %description setup
 Install this package to configure initial Gallery installation. You
