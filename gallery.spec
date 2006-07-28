@@ -121,10 +121,10 @@ rm -rf $RPM_BUILD_ROOT
 %{_appdir}/lib
 %{_appdir}/modules
 %{_appdir}/themes
+%{_appdir}/upgrade
 
 %files setup
 %defattr(644,root,root,755)
 %{_appdir}/config.php
 %{_appdir}/install
-%{_appdir}/upgrade
 #/var/lib/gallery/setup
