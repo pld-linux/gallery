@@ -85,6 +85,11 @@ touch $RPM_BUILD_ROOT%{_sysconfdir}/login.txt
 ln -s %{_sysconfdir}/config.php $RPM_BUILD_ROOT%{_appdir}/config.php
 ln -s %{_sysconfdir}/login.txt $RPM_BUILD_ROOT%{_appdir}/login.txt
 
+## Cleanup modules that are avaible in separate packages:
+for module in exif; do
+	rm -rf $RPM_BUILD_ROOT%{_appdir}/modules/$module
+done
+
 %clean
 rm -rf $RPM_BUILD_ROOT
 
