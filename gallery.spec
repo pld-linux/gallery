@@ -5,11 +5,13 @@ Summary:	Web based photo album viewer and creator
 Summary(pl):	Przegl±darka i generator albumów zdjêæ w postaci stron WWW
 Name:		gallery
 Version:	2.1.1a
-Release:	1
+%define		_snap	20060728
+Release:	1.%{_snap}.0.1
 License:	GPL
 Group:		Applications/Publishing
-Source0:	http://dl.sourceforge.net/gallery/%{name}-%{version}-full.tar.gz
-# Source0-md5:	0ff0857716a1473c319b6a468c47c877
+#Source0:	http://dl.sourceforge.net/gallery/%{name}-%{version}-full.tar.gz
+Source0:	http://galleryupdates.jpmullan.com/G2/%{name}-nightly.tar.gz
+# Source0-md5:	6d609d4bbce81c7719799ad953a8b7d1
 Source1:	%{name}-apache.conf
 URL:		http://gallery.sourceforge.net/
 BuildRequires:	rpmbuild(macros) >= 1.268
