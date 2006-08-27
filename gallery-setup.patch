@@ -1,0 +1,25 @@
+--- gallery2/install/steps/DatabaseSetupStep.class	2006-07-27 11:34:42.000000000 +0300
++++ /home/glen/DatabaseSetupStep.class	2006-08-27 16:22:10.733076039 +0300
+@@ -31,9 +33,9 @@
+ 	    $this->_config = $galleryStub->getConfig('storage.config');
+ 	    if (empty($this->_config)) {
+ 		$this->_config = array();
+-		$this->_config['type'] = 'mysqlt';
++		$this->_config['type'] = 'mysqlt';
+ 		$this->_config['hostname'] = 'localhost';
+-		$this->_config['username'] = 'root';
++		$this->_config['username'] = 'mysql';
+ 		$this->_config['password'] = '';
+ 		$this->_config['database'] = 'gallery2';
+ 		$this->_config['tablePrefix'] = 'g2_';
+--- gallery2/install/steps/StorageSetupStep.class	2006-07-27 11:34:42.000000000 +0300
++++ /home/glen/StorageSetupStep.class	2006-08-27 16:22:10.753076488 +0300
+@@ -29,7 +31,7 @@
+ 	if (empty($this->_dir)) {
+ 	    $this->_dir = $galleryStub->getConfig('data.gallery.base');
+ 	    if (empty($this->_dir)) {
+-		$this->_dir = $_SESSION['configPath'] . DIRECTORY_SEPARATOR . 'g2data';
++		$this->_dir = '/var/lib/gallery';
+ 	    }
+ 	}
+ 
