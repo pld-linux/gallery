@@ -19,7 +19,7 @@
  	    $this->_dir = $galleryStub->getConfig('data.gallery.base');
  	    if (empty($this->_dir)) {
 -		$this->_dir = $_SESSION['configPath'] . DIRECTORY_SEPARATOR . 'g2data';
-+		$this->_dir = '/var/lib/gallery/g2data';
++		$this->_dir = '/var/lib/gallery';
  	    }
  	}
  
