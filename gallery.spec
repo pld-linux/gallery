@@ -75,6 +75,7 @@ rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT{%{_appdir},%{_sysconfdir},/var/lib/gallery/albums}
 
 cp -a *.{php,inc} $RPM_BUILD_ROOT%{_appdir}
+cp README.html $RPM_BUILD_ROOT%{_appdir}
 cp -a images lib modules themes $RPM_BUILD_ROOT%{_appdir}
 cp -a install upgrade $RPM_BUILD_ROOT%{_appdir}
 
@@ -129,6 +130,7 @@ rm -rf $RPM_BUILD_ROOT
 %files setup
 %defattr(644,root,root,755)
 %attr(640,root,http) %config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/login.txt
+%{_appdir}/README.html
 %{_appdir}/config.php
 %{_appdir}/install
 %{_appdir}/upgrade
