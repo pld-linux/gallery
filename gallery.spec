@@ -2,7 +2,7 @@
 # - use external libs, not the included ones: pear, smarty, adodb
 # - move to separate packages each: theme, module.
 %define	_snap	20060728
-%define	_rel	0.4
+%define	_rel	0.5
 Summary:	Web based photo album viewer and creator
 Summary(pl):	Przegl±darka i generator albumów zdjêæ w postaci stron WWW
 Name:		gallery
@@ -114,12 +114,14 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc README*
 %dir %attr(750,root,http) %{_sysconfdir}
+%attr(640,root,http) %config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/login.txt
 %attr(640,root,root) %config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/apache.conf
 %attr(640,root,root) %config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/httpd.conf
 %attr(640,root,http) %config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/config.php
 %dir %{_appdir}
 %dir /var/lib/gallery
 %dir %attr(770,root,http) /var/lib/gallery/albums
+%{_appdir}/login.txt
 %{_appdir}/*.php
 %{_appdir}/*.inc
 %{_appdir}/images
@@ -129,9 +131,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files setup
 %defattr(644,root,root,755)
-%attr(640,root,http) %config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/login.txt
 %{_appdir}/README.html
 %{_appdir}/config.php
 %{_appdir}/install
 %{_appdir}/upgrade
-%{_appdir}/login.txt
