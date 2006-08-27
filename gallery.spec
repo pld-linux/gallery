@@ -1,24 +1,26 @@
 # TODO:
 # - use external libs, not the included ones: pear, smarty, adodb
 # - move to separate packages each: theme, module.
+%define	_snap	20060728
+%define	_rel	0.3
 Summary:	Web based photo album viewer and creator
 Summary(pl):	Przegl±darka i generator albumów zdjêæ w postaci stron WWW
 Name:		gallery
 Version:	2.1.1a
-%define		_snap	20060728
-Release:	1.%{_snap}.0.1
+Release:	1.%{_snap}.%{_rel}
 License:	GPL
 Group:		Applications/Publishing
 #Source0:	http://dl.sourceforge.net/gallery/%{name}-%{version}-full.tar.gz
 Source0:	http://galleryupdates.jpmullan.com/G2/%{name}-nightly.tar.gz
 # Source0-md5:	6d609d4bbce81c7719799ad953a8b7d1
 Source1:	%{name}-apache.conf
+Patch0:		%{name}-setup.patch
 URL:		http://gallery.sourceforge.net/
 BuildRequires:	rpmbuild(macros) >= 1.268
-Requires:	webapps
+Requires:	php >= 3:4.1.0
 Requires:	php-gettext
 Requires:	php-pcre
-Requires:	php >= 3:4.1.0
+Requires:	webapps
 #Suggests:	apache(mod_rewrite)
 #Suggests:	jhead
 #Suggests:	jpegtran
@@ -64,6 +66,7 @@ pozostawienie plików instalacyjnych mog³oby byæ niebezpieczne.
 
 %prep
 %setup -q -n %{name}2
+%patch0 -p1
 
 rm -f LICENSE.txt *.bat
 
@@ -116,13 +119,11 @@ rm -rf $RPM_BUILD_ROOT
 %attr(640,root,root) %config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/apache.conf
 %attr(640,root,root) %config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/httpd.conf
 %attr(640,root,http) %config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/config.php
-%attr(640,root,http) %config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/login.txt
 %dir %{_appdir}
 %dir /var/lib/gallery
 %dir %attr(770,root,http) /var/lib/gallery/albums
 %{_appdir}/*.php
 %{_appdir}/*.inc
-%{_appdir}/login.txt
 %{_appdir}/images
 %{_appdir}/lib
 %{_appdir}/modules
@@ -131,6 +132,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files setup
 %defattr(644,root,root,755)
+%attr(640,root,http) %config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/login.txt
 %{_appdir}/config.php
 %{_appdir}/install
-#/var/lib/gallery/setup
+%{_appdir}/login.txt
