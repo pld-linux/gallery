@@ -2,7 +2,7 @@
 # - use external libs, not the included ones: pear, smarty, adodb
 # - move to separate packages each: theme, module.
 %define	_snap	20060728
-%define	_rel	0.3
+%define	_rel	0.4
 Summary:	Web based photo album viewer and creator
 Summary(pl):	Przegl±darka i generator albumów zdjêæ w postaci stron WWW
 Name:		gallery
@@ -77,9 +77,6 @@ install -d $RPM_BUILD_ROOT{%{_appdir},%{_sysconfdir},/var/lib/gallery/albums}
 cp -a *.{php,inc} $RPM_BUILD_ROOT%{_appdir}
 cp -a images lib modules themes $RPM_BUILD_ROOT%{_appdir}
 cp -a install upgrade $RPM_BUILD_ROOT%{_appdir}
-# in /var because of setup/resetadmin file
-#cp -a setup $RPM_BUILD_ROOT/var/lib/gallery
-#ln -s /var/lib/gallery/setup $RPM_BUILD_ROOT%{_appdir}
 
 install %{SOURCE1} $RPM_BUILD_ROOT%{_sysconfdir}/apache.conf
 install %{SOURCE1} $RPM_BUILD_ROOT%{_sysconfdir}/httpd.conf
@@ -128,11 +125,11 @@ rm -rf $RPM_BUILD_ROOT
 %{_appdir}/lib
 %{_appdir}/modules
 %{_appdir}/themes
-%{_appdir}/upgrade
 
 %files setup
 %defattr(644,root,root,755)
 %attr(640,root,http) %config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/login.txt
 %{_appdir}/config.php
 %{_appdir}/install
+%{_appdir}/upgrade
 %{_appdir}/login.txt
