@@ -42,9 +42,9 @@
  		'attrs' => array('size' => 50),
 --- gallery-1.5.2.orig/configure.sh
 +++ gallery-1.5.2/configure.sh
-@@ -1,20 +1,28 @@
+@@ -1,20 +1,29 @@
  #!/bin/sh
--# $Id$
+ # $Id$
  
 -chmod 755 setup
 +set -e
@@ -85,8 +85,7 @@
 +++ gallery-1.5.2/secure.sh
 @@ -1,21 +1,31 @@
  #!/bin/sh
--# $Id$
-+# $Id$
+ # $Id$
  
 -if [ -f config.php ]; then
 -    chmod 644 config.php 
