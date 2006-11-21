@@ -1,21 +1,21 @@
 Summary:	Web based photo album viewer and creator
 Summary(pl):	Przegl±darka i generator albumów zdjêæ w postaci stron WWW
 Name:		gallery
-Version:	1.5.4
+Version:	1.5.5pl1
 Release:	1
 License:	GPL
 Group:		Applications/Publishing
-Source0:	http://dl.sourceforge.net/gallery/%{name}-%{version}.tar.gz
-# Source0-md5:	1fa40c8dd944471b24c7bd2b78444e49
+Source0:	http://downloads.sourceforge.net/gallery/%{name}-1.5.5-pl1.tar.gz
+# Source0-md5:	d2f52d92776f47bf353787237607f23c
 Source1:	http://dl.sourceforge.net/gallery/pl_PL-1.5.2.tar.gz
 # Source1-md5:	1dd07a63d96299d8f5e4cc03342d318e
 Source2:	%{name}-apache.conf
 Patch0:		%{name}-PLD.patch
 URL:		http://gallery.sourceforge.net/
 BuildRequires:	rpmbuild(macros) >= 1.268
+Requires:	php(gettext)
 Requires:	webapps
-Requires:	php-gettext
-Requires:	php >= 3:4.1.0
+Requires:	webserver(php) >= 4.1.0
 #Suggests:	apache(mod_rewrite)
 #Suggests:	jhead
 #Suggests:	jpegtran
