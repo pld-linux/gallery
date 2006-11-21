@@ -2,7 +2,7 @@
 # - use external libs, not the included ones: pear, smarty, adodb
 # - move to separate packages each: theme, module.
 %define	_snap	20060728
-%define	_rel	0.5
+%define	_rel	0.8
 Summary:	Web based photo album viewer and creator
 Summary(pl):	Przegl±darka i generator albumów zdjêæ w postaci stron WWW
 Name:		gallery
@@ -17,10 +17,10 @@ Source1:	%{name}-apache.conf
 Patch0:		%{name}-setup.patch
 URL:		http://gallery.sourceforge.net/
 BuildRequires:	rpmbuild(macros) >= 1.268
-Requires:	php >= 3:4.1.0
-Requires:	php-gettext
-Requires:	php-pcre
+Requires:	php(gettext)
+Requires:	php(pcre)
 Requires:	webapps
+Requires:	webserver(php) >= 4.1.0
 #Suggests:	apache(mod_rewrite)
 #Suggests:	jhead
 #Suggests:	jpegtran
