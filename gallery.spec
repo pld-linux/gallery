@@ -4,7 +4,7 @@
 %define	_snap	20060728
 %define	_rel	0.8
 Summary:	Web based photo album viewer and creator
-Summary(pl):	Przegl±darka i generator albumów zdjêæ w postaci stron WWW
+Summary(pl.UTF-8):   PrzeglÄ…darka i generator albumÃ³w zdjÄ™Ä‡ w postaci stron WWW
 Name:		gallery
 Version:	2.1.1a
 Release:	1.%{_snap}.%{_rel}
@@ -40,16 +40,16 @@ management includes automatic thumbnail creation, image resizing,
 rotation, ordering and more. Albums can have read, write, and caption
 permissions per individual.
 
-%description -l pl
-Gallery jest albumem zdjêæ, który posiadaj kreatora konfiguracji i
-pozwala u¿ytkownikom tworzyæ i zarz±dzaæ albumami przez intuicyjny
-interfejs WWW. Zarz±dzanie zdjêciami umo¿liwia automatyczne tworzenie
-miniatur, zmianê wielko¶ci obrazów, obrót, zmianê kolejno¶ci
-wy¶wietlania, itp. Albumy mog± posiadaæ indywidualne uprawnienia.
+%description -l pl.UTF-8
+Gallery jest albumem zdjÄ™Ä‡, ktÃ³ry posiadaj kreatora konfiguracji i
+pozwala uÅ¼ytkownikom tworzyÄ‡ i zarzÄ…dzaÄ‡ albumami przez intuicyjny
+interfejs WWW. ZarzÄ…dzanie zdjÄ™ciami umoÅ¼liwia automatyczne tworzenie
+miniatur, zmianÄ™ wielkoÅ›ci obrazÃ³w, obrÃ³t, zmianÄ™ kolejnoÅ›ci
+wyÅ›wietlania, itp. Albumy mogÄ… posiadaÄ‡ indywidualne uprawnienia.
 
 %package setup
 Summary:	Gallery setup package
-Summary(pl):	Pakiet do wstêpnej konfiguracji Gallery
+Summary(pl.UTF-8):   Pakiet do wstÄ™pnej konfiguracji Gallery
 Group:		Applications/WWW
 Requires:	%{name} = %{version}-%{release}
 Conflicts:	external-gallery-module
@@ -59,10 +59,10 @@ Install this package to configure initial Gallery installation. You
 should uninstall this package when you're done, as it considered
 insecure to keep the setup files in place.
 
-%description setup -l pl
-Ten pakiet nale¿y zainstalowaæ w celu wstêpnej konfiguracji Gallery po
-pierwszej instalacji. Potem nale¿y go odinstalowaæ, jako ¿e
-pozostawienie plików instalacyjnych mog³oby byæ niebezpieczne.
+%description setup -l pl.UTF-8
+Ten pakiet naleÅ¼y zainstalowaÄ‡ w celu wstÄ™pnej konfiguracji Gallery po
+pierwszej instalacji. Potem naleÅ¼y go odinstalowaÄ‡, jako Å¼e
+pozostawienie plikÃ³w instalacyjnych mogÅ‚oby byÄ‡ niebezpieczne.
 
 %prep
 %setup -q -n %{name}2
