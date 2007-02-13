@@ -4,7 +4,7 @@
 %define	_snap	20060728
 %define	_rel	0.8
 Summary:	Web based photo album viewer and creator
-Summary(pl.UTF-8):   Przeglądarka i generator albumów zdjęć w postaci stron WWW
+Summary(pl.UTF-8):	Przeglądarka i generator albumów zdjęć w postaci stron WWW
 Name:		gallery
 Version:	2.1.1a
 Release:	1.%{_snap}.%{_rel}
@@ -49,7 +49,7 @@ wyświetlania, itp. Albumy mogą posiadać indywidualne uprawnienia.
 
 %package setup
 Summary:	Gallery setup package
-Summary(pl.UTF-8):   Pakiet do wstępnej konfiguracji Gallery
+Summary(pl.UTF-8):	Pakiet do wstępnej konfiguracji Gallery
 Group:		Applications/WWW
 Requires:	%{name} = %{version}-%{release}
 Conflicts:	external-gallery-module
