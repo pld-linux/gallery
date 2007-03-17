@@ -1,18 +1,16 @@
 # TODO:
 # - use external libs, not the included ones: pear, smarty, adodb
 # - move to separate packages each: theme, module.
-%define	_snap	20060728
-%define	_rel	0.8
 Summary:	Web based photo album viewer and creator
 Summary(pl.UTF-8):	Przeglądarka i generator albumów zdjęć w postaci stron WWW
 Name:		gallery
-Version:	2.1.1a
-Release:	1.%{_snap}.%{_rel}
+Version:	2.2
+Release:	1
 License:	GPL
 Group:		Applications/Publishing
-#Source0:	http://dl.sourceforge.net/gallery/%{name}-%{version}-full.tar.gz
-Source0:	http://galleryupdates.jpmullan.com/G2/%{name}-nightly.tar.gz
-# Source0-md5:	6d609d4bbce81c7719799ad953a8b7d1
+Source0:	http://dl.sourceforge.net/gallery/%{name}-%{version}-full.tar.gz
+# Source0-md5:	68742ba80acb25710702ea5e52251dfe
+#Source0:	http://galleryupdates.jpmullan.com/G2/%{name}-nightly.tar.gz
 Source1:	%{name}-apache.conf
 Patch0:		%{name}-setup.patch
 URL:		http://gallery.sourceforge.net/
@@ -66,7 +64,7 @@ pozostawienie plików instalacyjnych mogłoby być niebezpieczne.
 
 %prep
 %setup -q -n %{name}2
-%patch0 -p1
+%patch0 -p0
 
 rm -f LICENSE.txt *.bat
 
