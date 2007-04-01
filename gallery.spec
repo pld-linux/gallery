@@ -4,12 +4,12 @@
 Summary:	Web based photo album viewer and creator
 Summary(pl.UTF-8):	Przeglądarka i generator albumów zdjęć w postaci stron WWW
 Name:		gallery
-Version:	2.2
+Version:	2.2.1
 Release:	1
 License:	GPL
 Group:		Applications/Publishing
 Source0:	http://dl.sourceforge.net/gallery/%{name}-%{version}-full.tar.gz
-# Source0-md5:	68742ba80acb25710702ea5e52251dfe
+# Source0-md5:	e4501a9cec700f238bddc5791fec0f8c
 #Source0:	http://galleryupdates.jpmullan.com/G2/%{name}-nightly.tar.gz
 Source1:	%{name}-apache.conf
 Patch0:		%{name}-setup.patch
@@ -85,9 +85,9 @@ ln -s %{_sysconfdir}/config.php $RPM_BUILD_ROOT%{_appdir}/config.php
 ln -s %{_sysconfdir}/login.txt $RPM_BUILD_ROOT%{_appdir}/login.txt
 
 ## Cleanup modules that are avaible in separate packages:
-for module in exif; do
-	rm -rf $RPM_BUILD_ROOT%{_appdir}/modules/$module
-done
+#for module in exif; do
+#	rm -rf $RPM_BUILD_ROOT%{_appdir}/modules/$module
+#done
 
 %clean
 rm -rf $RPM_BUILD_ROOT
