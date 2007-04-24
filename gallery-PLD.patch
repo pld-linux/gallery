@@ -115,14 +115,14 @@
 -echo "    % ./configure.sh"
 +echo "    # $ROOT/configure.sh"
  echo ""
---- gallery-1.5.2.orig/setup/confirm.inc
-+++ gallery-1.5.2/setup/confirm.inc
+--- gallery/setup/confirm.inc~	2007-04-24 20:18:38.534227440 +0300
++++ gallery/setup/confirm.inc	2007-04-24 20:35:35.067171720 +0300
 @@ -53,7 +53,7 @@
  		${str_replace('.', '', $outfile) . '_file'} = 0;
  	} else {
  		$error++;
--		$viewheader .= '<br>'. gallery_error(sprintf(_("File %s is not writable by the webserver - chmod it 777 before proceeding.  See %s for more details."), "<i><b>$outfile</b></i>", $docs)) . "</p>\n";
-+		$viewheader .= gallery_error(sprintf(_("File %s is not writable by the webserver - run %s before proceeding.  See %s for more details."), "<i><b>$outfile</b></i>", "<tt>/usr/share/gallery/configure.sh</tt>", $docs)) . "</p>\n";
+-		$viewheader .= '<br>'. gallery_error(sprintf(_("File %s in your Gallery mainfolder is not writable by the webserver. - chmod it 777 before proceeding.  See %s for more details."), "<i><b>$outfile</b></i>", $docs)) . "</p>\n";
++		$viewheader .= gallery_error(sprintf(_("File %s in your Gallery mainfolder is not writable by the webserver. - run %s before proceeding.  See %s for more details."), "<i><b>$outfile</b></i>", "<tt>/usr/share/gallery/configure.sh</tt>", $docs)) . "</p>\n";
  		${str_replace('.', '', $outfile) . '_file'} = 1;
  	}
  }
