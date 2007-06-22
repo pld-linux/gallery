@@ -4,14 +4,15 @@
 Summary:	Web based photo album viewer and creator
 Summary(pl.UTF-8):	Przeglądarka i generator albumów zdjęć w postaci stron WWW
 Name:		gallery
-Version:	2.2.1
+Version:	2.2.2
 Release:	1
 License:	GPL
 Group:		Applications/Publishing
 Source0:	http://dl.sourceforge.net/gallery/%{name}-%{version}-full.tar.gz
-# Source0-md5:	e4501a9cec700f238bddc5791fec0f8c
+# Source0-md5:	488d7837d531e99d4b5f420150b792d9
 #Source0:	http://galleryupdates.jpmullan.com/G2/%{name}-nightly.tar.gz
 Source1:	%{name}-apache.conf
+Source2:	%{name}-lighttpd.conf
 Patch0:		%{name}-setup.patch
 URL:		http://gallery.sourceforge.net/
 BuildRequires:	rpmbuild(macros) >= 1.268
@@ -79,6 +80,7 @@ cp -a install upgrade $RPM_BUILD_ROOT%{_appdir}
 
 install %{SOURCE1} $RPM_BUILD_ROOT%{_sysconfdir}/apache.conf
 install %{SOURCE1} $RPM_BUILD_ROOT%{_sysconfdir}/httpd.conf
+install %{SOURCE2} $RPM_BUILD_ROOT%{_sysconfdir}/lighttpd.conf
 touch $RPM_BUILD_ROOT%{_sysconfdir}/config.php
 touch $RPM_BUILD_ROOT%{_sysconfdir}/login.txt
 ln -s %{_sysconfdir}/config.php $RPM_BUILD_ROOT%{_appdir}/config.php
@@ -104,6 +106,12 @@ rm -rf $RPM_BUILD_ROOT
 %triggerun -- apache < 2.2.0, apache-base
 %webapp_unregister httpd %{_webapp}
 
+%triggerin -- lighttpd
+%webapp_register lighttpd %{_webapp}
+
+%triggerun -- lighttpd
+%webapp_unregister lighttpd %{_webapp}
+
 %triggerpostun -- %{name} < 1.5.2-0.13
 /usr/sbin/webapp register httpd %{_webapp}
 %service -q httpd reload
@@ -115,6 +123,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(640,root,http) %config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/login.txt
 %attr(640,root,root) %config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/apache.conf
 %attr(640,root,root) %config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/httpd.conf
+%attr(640,root,root) %config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/lighttpd.conf
 %attr(640,root,http) %config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/config.php
 %dir %{_appdir}
 %dir /var/lib/gallery
