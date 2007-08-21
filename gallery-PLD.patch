@@ -115,25 +115,25 @@
 -echo "    % ./configure.sh"
 +echo "    # $ROOT/configure.sh"
  echo ""
---- gallery/setup/confirm.inc~	2007-04-24 20:18:38.534227440 +0300
-+++ gallery/setup/confirm.inc	2007-04-24 20:35:35.067171720 +0300
+--- gallery/setup/confirm.inc~	2007-08-21 09:25:22.650536464 +0300
++++ gallery/setup/confirm.inc	2007-08-21 09:28:17.384497289 +0300
 @@ -53,7 +53,7 @@
  		${str_replace('.', '', $outfile) . '_file'} = 0;
  	} else {
  		$error++;
--		$viewheader .= '<br>'. gallery_error(sprintf(_("File %s in your Gallery mainfolder is not writable by the webserver. - chmod it 777 before proceeding.  See %s for more details."), "<i><b>$outfile</b></i>", $docs)) . "</p>\n";
-+		$viewheader .= gallery_error(sprintf(_("File %s in your Gallery mainfolder is not writable by the webserver. - run %s before proceeding.  See %s for more details."), "<i><b>$outfile</b></i>", "<tt>/usr/share/gallery/configure.sh</tt>", $docs)) . "</p>\n";
+-		$viewheader .= '<br>'. gallery_error(sprintf(gTranslate('config', "File %s in your Gallery mainfolder is not writable by the webserver. - chmod it 777 before proceeding.  See %s for more details."), "<i><b>$outfile</b></i>", $docs)) . "</p>\n";
++		$viewheader .= '<br>'. gallery_error(sprintf(gTranslate('config', "File %s in your Gallery mainfolder is not writable by the webserver. - run %s before proceeding.  See %s for more details."), "<i><b>$outfile</b></i>", "<tt>/usr/share/gallery/configure.sh</tt>", $docs)) . "</p>\n";
  		${str_replace('.', '', $outfile) . '_file'} = 1;
  	}
  }
---- gallery-1.5.2.orig/setup/write.inc
-+++ gallery-1.5.2/setup/write.inc
+--- gallery/setup/write.inc~	2007-08-21 09:25:22.660536691 +0300
++++ gallery/setup/write.inc	2007-08-21 09:29:42.406424831 +0300
 @@ -193,7 +193,7 @@
  		$message .= "<br><br>";
  	else
  		$message = "";
--	$message .= _("We highly suggest that you run 'secure.sh', or chmod your .htaccess and config.php to 644 for increased security.");
-+	$message .= _("We highly suggest that you run '/usr/share/gallery/secure.sh' for increased security.");
+-	$message .= gTranslate('config', "We highly suggest that you run 'secure.sh', or chmod your .htaccess and config.php to 644 for increased security.");
++	$message .= gTranslate('config', "We highly suggest that you run '/usr/share/gallery/secure.sh' for increased security.");
  }
  
  // Inform the user that their gallery is not secure until they remove the 'resetadmin' file
