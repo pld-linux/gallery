@@ -1,14 +1,14 @@
---- ./lib/url.php~	2005-12-26 23:23:03.000000000 +0200
-+++ ./lib/url.php	2006-01-27 00:45:58.479261981 +0200
-@@ -17,7 +17,7 @@
+--- gallery-1.5.10/lib/url.php~	2009-08-27 10:16:20.000000000 +0300
++++ gallery-1.5.10/lib/url.php	2009-08-27 10:17:03.141519923 +0300
+@@ -38,7 +38,7 @@
  	$currentFile = __FILE__;
  	if ( $currentFile == '/usr/share/gallery/lib/url.php') {
- 		/* We assum Gallery runs on as Debian Package */
+ 		/* We assume Gallery runs on as Debian Package */
 -		define ("GALLERY_CONFDIR", "/etc/gallery");
 +		define ("GALLERY_CONFDIR", "/usr/share/gallery");
  		define ("GALLERY_SETUPDIR", "/var/lib/gallery/setup");
- 	} else {
- 		define ("GALLERY_CONFDIR", dirname(dirname(__FILE__)));
+ 	}
+ 	else {
 --- gallery/setup/config_data.inc	2006-01-10 07:41:32.000000000 +0200
 +++ /tmp/config_data.inc	2006-01-27 00:53:36.000000000 +0200
 @@ -330,7 +330,7 @@
@@ -126,14 +126,14 @@
  		${str_replace('.', '', $outfile) . '_file'} = 1;
  	}
  }
---- gallery/setup/write.inc~	2007-08-21 09:25:22.660536691 +0300
-+++ gallery/setup/write.inc	2007-08-21 09:29:42.406424831 +0300
-@@ -193,7 +193,7 @@
+--- gallery-1.5.10/setup/write.inc~	2009-08-27 10:17:59.000000000 +0300
++++ gallery-1.5.10/setup/write.inc	2009-08-27 10:18:26.424844612 +0300
+@@ -207,7 +207,7 @@
  		$message .= "<br><br>";
- 	else
- 		$message = "";
--	$message .= gTranslate('config', "We highly suggest that you run 'secure.sh', or chmod your .htaccess and config.php to 644 for increased security.");
-+	$message .= gTranslate('config', "We highly suggest that you run '/usr/share/gallery/secure.sh' for increased security.");
+ 	}
+ 	else {
+-		$message = gTranslate('config', "We highly suggest that you run 'secure.sh', or chmod your .htaccess and config.php to 644 for increased security.");
++		$message = gTranslate('config', "We highly suggest that you run '/usr/share/gallery/secure.sh' for increased security.");
+ 	}
  }
  
- // Inform the user that their gallery is not secure until they remove the 'resetadmin' file
