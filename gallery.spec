@@ -16,9 +16,13 @@ BuildRequires:	rpmbuild(macros) >= 1.268
 Requires:	php(gettext)
 Requires:	webapps
 Requires:	webserver(php) >= 4.1.0
-#Suggests:	apache(mod_rewrite)
-#Suggests:	jhead
-#Suggests:	jpegtran
+Suggests:	ImageMagick
+Suggests:	ImageMagick-coder-jpeg
+Suggests:	ImageMagick-coder-png
+Suggests:	apache(mod_rewrite)
+Suggests:	jhead
+Suggests:	jpegtran
+Suggests:	netpbm-progs
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
