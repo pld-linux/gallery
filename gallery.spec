@@ -5,7 +5,7 @@ Summary:	Web based photo album viewer and creator
 Summary(pl.UTF-8):	Przeglądarka i generator albumów zdjęć w postaci stron WWW
 Name:		gallery
 Version:	2.3
-Release:	1
+Release:	2
 License:	GPL
 Group:		Applications/Publishing
 Source0:	http://dl.sourceforge.net/gallery/%{name}-%{version}-full.tar.gz
@@ -13,6 +13,7 @@ Source0:	http://dl.sourceforge.net/gallery/%{name}-%{version}-full.tar.gz
 #Source0:	http://galleryupdates.jpmullan.com/G2/%{name}-nightly.tar.gz
 Source1:	%{name}-apache.conf
 Source2:	%{name}-lighttpd.conf
+Source3:	%{name}-httpd.conf
 Patch0:		%{name}-setup.patch
 URL:		http://gallery.sourceforge.net/
 BuildRequires:	rpmbuild(macros) >= 1.268
@@ -24,6 +25,7 @@ Requires:	webserver(php) >= 4.1.0
 #Suggests:	jhead
 #Suggests:	jpegtran
 #Suggests:	php-gd
+Conflicts:	apache-base < 2.4.0-1
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -79,7 +81,7 @@ cp -a images lib modules themes $RPM_BUILD_ROOT%{_appdir}
 cp -a install upgrade $RPM_BUILD_ROOT%{_appdir}
 
 install %{SOURCE1} $RPM_BUILD_ROOT%{_sysconfdir}/apache.conf
-install %{SOURCE1} $RPM_BUILD_ROOT%{_sysconfdir}/httpd.conf
+install %{SOURCE3} $RPM_BUILD_ROOT%{_sysconfdir}/httpd.conf
 install %{SOURCE2} $RPM_BUILD_ROOT%{_sysconfdir}/lighttpd.conf
 touch $RPM_BUILD_ROOT%{_sysconfdir}/config.php
 touch $RPM_BUILD_ROOT%{_sysconfdir}/login.txt
@@ -100,10 +102,10 @@ rm -rf $RPM_BUILD_ROOT
 %triggerun -- apache1 < 1.3.37-3, apache1-base
 %webapp_unregister apache %{_webapp}
 
-%triggerin -- apache < 2.2.0, apache-base
+%triggerin -- apache-base
 %webapp_register httpd %{_webapp}
 
-%triggerun -- apache < 2.2.0, apache-base
+%triggerun -- apache-base
 %webapp_unregister httpd %{_webapp}
 
 %triggerin -- lighttpd
