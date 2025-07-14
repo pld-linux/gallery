@@ -67,7 +67,7 @@ pozostawienie plików instalacyjnych mogłoby być niebezpieczne.
 
 %prep
 %setup -q -n %{name}2
-%patch0 -p0
+%patch -P0 -p0
 
 rm -f LICENSE.txt *.bat
 
