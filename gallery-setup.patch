@@ -1,6 +1,6 @@
---- install/steps/DatabaseSetupStep.class.orig	2007-03-17 18:35:42.000000000 +0100
-+++ install/steps/DatabaseSetupStep.class	2007-03-17 18:38:53.000000000 +0100
-@@ -37,7 +37,7 @@
+--- a/install/steps/DatabaseSetupStep.class
++++ b/install/steps/DatabaseSetupStep.class
+@@ -38,7 +38,7 @@
  		$this->_config = array();
  		$this->_config['type'] = 'mysqlt';
  		$this->_config['hostname'] = 'localhost';
@@ -8,9 +8,9 @@
 +		$this->_config['username'] = 'mysql';
  		$this->_config['password'] = '';
  		$this->_config['database'] = 'gallery2';
- 		$this->_config['tablePrefix'] = 'g2_';
---- install/steps/StorageSetupStep.class.orig	2007-03-17 18:37:13.000000000 +0100
-+++ install/steps/StorageSetupStep.class	2007-03-17 18:39:22.000000000 +0100
+ 		$this->_config['schema'] = '';
+--- a/install/steps/StorageSetupStep.class
++++ b/install/steps/StorageSetupStep.class
 @@ -33,7 +33,7 @@
  	if (empty($this->_dir)) {
  	    $this->_dir = $galleryStub->getConfig('data.gallery.base');

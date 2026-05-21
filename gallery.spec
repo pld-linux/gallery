@@ -5,7 +5,7 @@ Summary:	Web based photo album viewer and creator
 Summary(pl.UTF-8):	Przeglądarka i generator albumów zdjęć w postaci stron WWW
 Name:		gallery
 Version:	2.3
-Release:	3
+Release:	4
 License:	GPL
 Group:		Applications/Publishing
 Source0:	http://dl.sourceforge.net/gallery/%{name}-%{version}-full.tar.gz
@@ -67,7 +67,7 @@ pozostawienie plików instalacyjnych mogłoby być niebezpieczne.
 
 %prep
 %setup -q -n %{name}2
-%patch -P0 -p0
+%patch -P0 -p1
 
 rm -f LICENSE.txt *.bat
 
